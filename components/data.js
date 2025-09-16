@@ -12,7 +12,7 @@ export const CATEGORIES = [
 ];
 
 export const PRODUCTS = [
-  { id: "p-001", name: "Caña Shimano FX 6'6"", brand: "Shimano", price: 54990, category: "Pesca", image: "https://images.unsplash.com/photo-1544551763-7ef4200b30ea?q=80&w=1200&auto=format&fit=crop", desc: "Caña versátil para ríos y lagos." },
+  { id: "p-001", name: "Caña Shimano FX 6'6″", brand: "Shimano", price: 54990, category: "Pesca", image: "https://images.unsplash.com/photo-1544551763-7ef4200b30ea?q=80&w=1200&auto=format&fit=crop", desc: "Caña versátil para ríos y lagos." },
   { id: "p-002", name: "Carrete Shimano Sienna 2500", brand: "Shimano", price: 79990, category: "Pesca", image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1200&auto=format&fit=crop", desc: "Carrete suave y duradero." },
   { id: "p-003", name: "Señuelo Rapala Original", brand: "Rapala", price: 12990, category: "Pesca", image: "https://images.unsplash.com/photo-1520777234719-1c1b48b74a8f?q=80&w=1200&auto=format&fit=crop", desc: "Clásico señuelo de pesca." },
   { id: "p-101", name: "Lentes tácticos WileyX Saber", brand: "WileyX", price: 99990, category: "Caza", image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1200&auto=format&fit=crop", desc: "Protección balística." },
