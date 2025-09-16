@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ptactico.cl/sitemap.xml
