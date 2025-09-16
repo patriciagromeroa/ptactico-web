@@ -11,32 +11,49 @@ export default function Storefront() {
     let list = PRODUCTS.slice();
     if (category && category !== "ver todo") list = list.filter(p => p.category === category);
     const query = q.trim().toLowerCase();
-    if (query) list = list.filter(p =>
-      p.name.toLowerCase().includes(query) ||
-      p.brand.toLowerCase().includes(query) ||
-      (p.desc || "").toLowerCase().includes(query)
-    );
+    if (query) {
+      list = list.filter(p =>
+        p.name.toLowerCase().includes(query) ||
+        p.brand.toLowerCase().includes(query) ||
+        (p.desc || "").toLowerCase().includes(query)
+      );
+    }
     return list;
   }, [category, q]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-slate-50">
+      {/* HEADER */}
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-slate-900/70 bg-slate-900/90 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-lime-400 grid place-content-center font-black text-slate-900">PT</div>
+            {/* Logo real (usa tu archivo en /public/Logo ptactico web.png) */}
+            <div className="h-10 w-10 rounded-xl overflow-hidden border border-slate-700 bg-white/90">
+              <img
+                src="/Logo%20ptactico%20web.png"
+                alt="Logo Punto Táctico"
+                className="w-full h-full object-contain p-1"
+              />
+            </div>
             <div>
               <div className="text-lg font-extrabold tracking-tight">Punto Táctico</div>
               <div className="text-[11px] text-slate-400">Catálogo por categorías</div>
             </div>
           </div>
+
           <div className="relative ml-auto w-full max-w-xl">
             <svg className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7" strokeWidth="2" /><line x1="21" y1="21" x2="16.65" y2="16.65" strokeWidth="2" /></svg>
-            <input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Buscar por nombre o marca…" className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700 outline-none focus:ring-2 ring-lime-400/40 text-sm" />
+            <input
+              value={q}
+              onChange={(e)=>setQ(e.target.value)}
+              placeholder="Buscar por nombre o marca…"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700 outline-none focus:ring-2 ring-lime-400/40 text-sm"
+            />
           </div>
         </div>
       </header>
 
+      {/* CONTENIDO */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="py-6">
           <div className="flex gap-2 flex-wrap">
@@ -66,6 +83,7 @@ export default function Storefront() {
         </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="border-t border-slate-800 py-10 mt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-6 text-sm">
           <div>
