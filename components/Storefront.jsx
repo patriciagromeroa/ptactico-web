@@ -9,8 +9,6 @@ export default function Storefront() {
 
   const filtered = useMemo(() => {
     let list = PRODUCTS.slice();
-
-    // Filtro por categoría (incluye Novedades)
     if (category && category !== "ver todo") {
       if (category.toLowerCase() === "novedades") {
         list = list.filter((p) => (p.badge || "").toLowerCase() === "nuevo");
@@ -18,8 +16,6 @@ export default function Storefront() {
         list = list.filter((p) => p.category === category);
       }
     }
-
-    // Búsqueda por texto
     const query = q.trim().toLowerCase();
     if (query) {
       list = list.filter((p) =>
@@ -32,32 +28,39 @@ export default function Storefront() {
   }, [category, q]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50">
-      {/* TOPBAR (similar a Andesgear: info breve) */}
-      <div className="hidden md:block bg-slate-950 border-b border-slate-800 text-[12px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
-          <div className="text-slate-300">
-            Envío a todo Chile • Cambios y garantías conforme a la Ley del Consumidor
+    <div className="min-h-screen bg-white text-slate-900">
+      {/* TOPBAR: dirección + envío (izq) / WhatsApp + RRSS (der) */}
+      <div className="bg-white border-b border-slate-200 text-[12px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between">
+          <div className="text-slate-600">
+            Av. Aníbal Pinto 615, Local B • Envío a todo Chile
           </div>
-          <div className="text-slate-400">
-            WhatsApp soporte: <span className="text-slate-200 font-medium">+56 9 0000 0000</span>
+          <div className="flex items-center gap-4 text-slate-600">
+            <span>WhatsApp soporte: <span className="text-slate-900 font-medium">+56 9 9214 0250</span></span>
+            <span className="hidden md:inline">|</span>
+            <span className="hidden md:flex items-center gap-2">
+              <strong className="font-semibold">Síguenos en nuestras redes sociales:</strong>
+              <a className="underline hover:text-emerald-700" href="https://www.facebook.com/PuntoTacticoSpA" target="_blank" rel="noreferrer">Facebook: Punto Táctico SpA</a>
+              <span>•</span>
+              <a className="underline hover:text-emerald-700" href="https://www.instagram.com/puntotactico.spa" target="_blank" rel="noreferrer">Instagram: @puntotactico.spa</a>
+            </span>
           </div>
         </div>
       </div>
 
-      {/* HEADER principal (logo izq, búsqueda centro, acciones der) */}
-      <header className="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-30">
+      {/* HEADER principal: logo izq / búsqueda centro / acciones der */}
+      <header className="bg-white backdrop-blur border-b border-slate-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-4">
-          {/* LOGO */}
+          {/* LOGO (usa tu archivo en /public/) */}
           <a href="/" className="flex items-center gap-2 shrink-0" aria-label="Inicio Punto Táctico">
             <img
               src="/Logo%20ptactico%20web.png"
               alt="Logo Punto Táctico"
-              className="h-9 md:h-10 w-auto"
+              className="h-10 md:h-12 w-auto" /* alto visible sugerido */
             />
           </a>
 
-          {/* BUSCADOR grande */}
+          {/* BUSCADOR central */}
           <div className="flex-1">
             <div className="relative">
               <svg className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7" strokeWidth="2" /><line x1="21" y1="21" x2="16.65" y2="16.65" strokeWidth="2" /></svg>
@@ -65,20 +68,20 @@ export default function Storefront() {
                 value={q}
                 onChange={(e)=>setQ(e.target.value)}
                 placeholder="Buscar productos, marcas…"
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-800/70 border border-slate-700 outline-none focus:ring-2 ring-lime-400/40 text-sm"
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-300 outline-none focus:ring-2 ring-emerald-300 text-sm"
               />
             </div>
           </div>
 
-          {/* Acciones (placeholders visuales) */}
+          {/* acciones (placeholders) */}
           <div className="hidden md:flex items-center gap-2">
-            <button className="px-3 py-2 rounded-lg bg-slate-800/60 border border-slate-700 text-sm">Ingresar</button>
-            <button className="px-3 py-2 rounded-lg bg-emerald-500 text-slate-900 font-semibold">Carrito</button>
+            <button className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-300 text-sm">Ingresar</button>
+            <button className="px-3 py-2 rounded-lg bg-emerald-600 text-white font-semibold">Carrito</button>
           </div>
         </div>
 
-        {/* NAV de categorías tipo chips (incluye Novedades) */}
-        <nav className="border-t border-slate-800">
+        {/* NAV categorías tipo chips (incluye Novedades) */}
+        <nav className="border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 overflow-x-auto no-scrollbar">
             <div className="flex gap-2">
               {CATEGORIES.map((c) => {
@@ -90,8 +93,8 @@ export default function Storefront() {
                     className={[
                       "px-3 py-1.5 rounded-full text-[13px] border transition",
                       active
-                        ? "bg-emerald-500 text-slate-900 border-emerald-400"
-                        : "bg-slate-800/60 border-slate-700 text-slate-200 hover:bg-slate-800"
+                        ? "bg-emerald-600 text-white border-emerald-600"
+                        : "bg-slate-100 text-slate-900 border-slate-200 hover:bg-slate-200"
                     ].join(" ")}
                   >
                     {c}
@@ -103,7 +106,7 @@ export default function Storefront() {
         </nav>
       </header>
 
-      {/* BANNER / HERO (si subes las imágenes a /public/ se mostrará) */}
+      {/* BANNER / HERO (opcional; si subes archivos se muestra) */}
       <section className="relative">
         <picture>
           {/* Desktop */}
@@ -114,31 +117,26 @@ export default function Storefront() {
           <img
             src="/banner-ptactico-mobile.jpg"
             alt="Punto Táctico — Outdoor, caza, pesca y camping"
-            className="w-full h-[280px] md:h-[520px] object-cover"
+            className="w-full h-[260px] md:h-[500px] object-cover"
             loading="eager"
             fetchpriority="high"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-6">
-            <h1 className="text-2xl md:text-4xl font-extrabold leading-tight">Punto Táctico</h1>
-            <p className="text-sm md:text-base text-slate-200/90">Donde la aventura y la calidad se encuentran</p>
-          </div>
-        </div>
+        {/* velo suave para texto en fotos claras */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/60 via-white/0 to-white/0" />
       </section>
 
       {/* LISTADO */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="py-6">
-          <div className="text-slate-400 text-sm">
+          <div className="text-slate-600 text-sm">
             {category === "ver todo" ? "Mostrando todas las categorías" : `Filtrando por: ${category}`} • {filtered.length} productos
           </div>
         </section>
 
         <section className="pb-10">
           {filtered.length === 0 ? (
-            <div className="text-slate-400 py-16 text-center">No hay resultados para tu búsqueda.</div>
+            <div className="text-slate-600 py-16 text-center">No hay resultados para tu búsqueda.</div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
               {filtered.map((p) => <ProductCard key={p.id} p={p} />)}
@@ -147,31 +145,32 @@ export default function Storefront() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="border-t border-slate-800 py-10">
+      {/* FOOTER con dirección y RRSS */}
+      <footer className="border-t border-slate-200 py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-6 text-sm">
           <div>
             <div className="text-lg font-extrabold">Punto Táctico</div>
-            <p className="text-slate-400 mt-2">Outdoor, caza, pesca, camping y táctico.</p>
+            <p className="text-slate-600 mt-2">Outdoor, caza, pesca, camping y táctico.</p>
           </div>
           <div>
             <div className="font-bold">Categorías</div>
-            <ul className="mt-2 text-slate-400 space-y-1">
+            <ul className="mt-2 text-slate-600 space-y-1">
               {CATEGORIES.filter(c => c !== "ver todo").map((c) => <li key={c}>{c}</li>)}
             </ul>
           </div>
           <div>
-            <div className="font-bold">Atención</div>
-            <ul className="mt-2 text-slate-400 space-y-1">
-              <li>Despachos a todo Chile</li>
-              <li>Pagos habituales (próximamente)</li>
+            <div className="font-bold">Contacto</div>
+            <ul className="mt-2 text-slate-600 space-y-1">
+              <li>Dirección: Av. Aníbal Pinto 615, Local B</li>
+              <li>WhatsApp: +56 9 9214 0250</li>
+              <li>Email: puntotacticospa@gmail.com</li>
             </ul>
           </div>
           <div>
-            <div className="font-bold">Contacto</div>
-            <ul className="mt-2 text-slate-400 space-y-1">
-              <li>Parral, Chile</li>
-              <li>puntotacticospa@gmail.com</li>
+            <div className="font-bold">Síguenos en nuestras redes sociales</div>
+            <ul className="mt-2 text-slate-600 space-y-1">
+              <li><a className="underline hover:text-emerald-700" href="https://www.facebook.com/PuntoTacticoSpA" target="_blank" rel="noreferrer">Facebook: Punto Táctico SpA</a></li>
+              <li><a className="underline hover:text-emerald-700" href="https://www.instagram.com/puntotactico.spa" target="_blank" rel="noreferrer">Instagram: @puntotactico.spa</a></li>
             </ul>
           </div>
         </div>
