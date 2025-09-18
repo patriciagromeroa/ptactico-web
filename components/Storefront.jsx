@@ -132,13 +132,15 @@ export default function Storefront() {
 
       {/* BANNER opcional (si subes imágenes a /public/) */}
       <section className="relative">
-       <picture>
-  <source srcSet="/banner-ptactico-desktop-v2.webp" media="(min-width: 768px)" type="image/webp" />
-  <source srcSet="/banner-ptactico-desktop-v2.jpg"  media="(min-width: 768px)" />
-  <source srcSet="/banner-ptactico-mobile-v2.webp" type="image/webp" />
+ <picture>
+  {/* Desktop */}
+  <source srcSet="/banner-ptactico-desktop-final.webp" media="(min-width: 768px)" type="image/webp" />
+  <source srcSet="/banner-ptactico-desktop-final.jpg"  media="(min-width: 768px)" />
+  {/* Mobile */}
+  <source srcSet="/banner-ptactico-mobile-final.webp" type="image/webp" />
   <img
-    src="/banner-ptactico-mobile-v2.jpg"
-    alt="Punto Táctico — Outdoor, caza, pesca y camping"
+    src="/banner-ptactico-mobile-final.jpg"
+    alt="Punto Táctico — Marcas oficiales y tu aliado estratégico"
     className="w-full h-[260px] md:h-[500px] object-cover"
     loading="eager"
     fetchpriority="high"
