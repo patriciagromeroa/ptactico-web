@@ -139,12 +139,12 @@ export default function Storefront() {
   {/* Mobile */}
   <source srcSet="/banner-ptactico-mobile-final.webp" type="image/webp" />
   <img
-    src="/banner-ptactico-mobile-final.jpg"
-    alt="Punto Táctico — Marcas oficiales y tu aliado estratégico"
-    className="w-full h-[260px] md:h-[500px] object-cover"
-    loading="eager"
-    fetchpriority="high"
-  />
+  src="/banner-ptactico-mobile-final.jpg"
+  alt="Punto Táctico — Marcas oficiales y tu aliado estratégico"
+  className="w-full h-[220px] md:h-[380px] object-contain bg-white"
+  loading="eager"
+  fetchpriority="high"
+/>
 </picture>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/60 via-white/0 to-white/0" />
       </section>
