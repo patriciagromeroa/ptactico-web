@@ -141,7 +141,7 @@ export default function Storefront() {
   <img
   src="/banner-ptactico-mobile-final.jpg"
   alt="Punto Táctico — Marcas oficiales y tu aliado estratégico"
-  className="w-full h-[220px] md:h-[400px] object-contain bg-white"
+  className="w-full h-[220px] md:h-[380px] object-contain bg-white"
   loading="eager"
   fetchpriority="high"
 />
